@@ -1,3 +1,5 @@
+Add a .env file and add PORT and MONGO_URI in it
+
 | **Endpoint**               | **Method** | **Description**                                     | **Request Body** (if applicable)                                      |
 |---------------------------|------------|--------------------------------------------------|----------------------------------------------------------------|
 | `/user/signup`           | POST       | Register a new user                              | `{ "name": "string", "email": "string", "password": "string" }` |
