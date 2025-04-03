@@ -3,7 +3,10 @@ const Ride = require("../models/rideModel");
 const getAllRides = async (req, res) => {
   try {
     const rides = await Ride.find().populate("organizer_id", "name email");
-    res.status(200).json(rides);
+    res.status(200).json({
+      success: true,
+      message: rides
+    });
   } catch (error) {
     res.status(500).json({ message: "Error fetching rides", error });
   }
