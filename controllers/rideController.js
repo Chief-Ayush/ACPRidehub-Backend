@@ -5,10 +5,15 @@ const getAllRides = async (req, res) => {
     const rides = await Ride.find().populate("organizer_id", "name email");
     res.status(200).json({
       success: true,
-      message: rides
+      message: "Rides Fetched Successfully",
+      data: rides
     });
   } catch (error) {
-    res.status(500).json({ message: "Error fetching rides", error });
+    res.status(500).json({
+      success: false,
+      message: "Error fetching rides",
+      error
+    });
   }
 };
 
@@ -65,7 +70,7 @@ const getRideById = async (req, res) => {
 
 const updateRide = async (req, res) => {
   try {
-    const { rideId } = req.params;
+    const rideId = req.params.id;
     const updatedRide = await Ride.findByIdAndUpdate(rideId, req.body, {
       new: true,
     });
